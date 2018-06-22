@@ -12,6 +12,15 @@
 		532F223520DCC032009124A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 532F223320DCC032009124A9 /* Main.storyboard */; };
 		532F223720DCC032009124A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 532F223620DCC032009124A9 /* Assets.xcassets */; };
 		532F223A20DCC032009124A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 532F223820DCC032009124A9 /* LaunchScreen.storyboard */; };
+		532F224220DCC0D3009124A9 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F224120DCC0D3009124A9 /* Account.swift */; };
+		532F224420DCC29B009124A9 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F224320DCC29B009124A9 /* AccountTableViewCell.swift */; };
+		532F224620DCC2BD009124A9 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F224520DCC2BD009124A9 /* AccountTableViewController.swift */; };
+		532F224820DCC32F009124A9 /* EditAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F224720DCC32F009124A9 /* EditAccountTableViewController.swift */; };
+		532F224B20DCE437009124A9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F224A20DCE437009124A9 /* CalendarViewController.swift */; };
+		532F224D20DCFA34009124A9 /* RemindTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F224C20DCFA34009124A9 /* RemindTableViewController.swift */; };
+		532F224F20DCFA46009124A9 /* EditRemindTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F224E20DCFA46009124A9 /* EditRemindTableViewController.swift */; };
+		532F225120DCFBD0009124A9 /* Remind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F225020DCFBD0009124A9 /* Remind.swift */; };
+		532F225320DD0D9B009124A9 /* RemindTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532F225220DD0D9B009124A9 /* RemindTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		532F223620DCC032009124A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		532F223920DCC032009124A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		532F223B20DCC032009124A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		532F224120DCC0D3009124A9 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		532F224320DCC29B009124A9 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		532F224520DCC2BD009124A9 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		532F224720DCC32F009124A9 /* EditAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountTableViewController.swift; sourceTree = "<group>"; };
+		532F224A20DCE437009124A9 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		532F224C20DCFA34009124A9 /* RemindTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindTableViewController.swift; sourceTree = "<group>"; };
+		532F224E20DCFA46009124A9 /* EditRemindTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRemindTableViewController.swift; sourceTree = "<group>"; };
+		532F225020DCFBD0009124A9 /* Remind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remind.swift; sourceTree = "<group>"; };
+		532F225220DD0D9B009124A9 /* RemindTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +74,16 @@
 			children = (
 				532F222F20DCC032009124A9 /* AppDelegate.swift */,
 				532F223120DCC032009124A9 /* ViewController.swift */,
+				532F224A20DCE437009124A9 /* CalendarViewController.swift */,
 				532F223320DCC032009124A9 /* Main.storyboard */,
+				532F225020DCFBD0009124A9 /* Remind.swift */,
+				532F224C20DCFA34009124A9 /* RemindTableViewController.swift */,
+				532F224E20DCFA46009124A9 /* EditRemindTableViewController.swift */,
+				532F224120DCC0D3009124A9 /* Account.swift */,
+				532F224320DCC29B009124A9 /* AccountTableViewCell.swift */,
+				532F225220DD0D9B009124A9 /* RemindTableViewCell.swift */,
+				532F224520DCC2BD009124A9 /* AccountTableViewController.swift */,
+				532F224720DCC32F009124A9 /* EditAccountTableViewController.swift */,
 				532F223620DCC032009124A9 /* Assets.xcassets */,
 				532F223820DCC032009124A9 /* LaunchScreen.storyboard */,
 				532F223B20DCC032009124A9 /* Info.plist */,
@@ -135,8 +162,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				532F224D20DCFA34009124A9 /* RemindTableViewController.swift in Sources */,
+				532F224F20DCFA46009124A9 /* EditRemindTableViewController.swift in Sources */,
+				532F225320DD0D9B009124A9 /* RemindTableViewCell.swift in Sources */,
 				532F223220DCC032009124A9 /* ViewController.swift in Sources */,
+				532F224820DCC32F009124A9 /* EditAccountTableViewController.swift in Sources */,
+				532F224620DCC2BD009124A9 /* AccountTableViewController.swift in Sources */,
+				532F224420DCC29B009124A9 /* AccountTableViewCell.swift in Sources */,
 				532F223020DCC032009124A9 /* AppDelegate.swift in Sources */,
+				532F224B20DCE437009124A9 /* CalendarViewController.swift in Sources */,
+				532F225120DCFBD0009124A9 /* Remind.swift in Sources */,
+				532F224220DCC0D3009124A9 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
