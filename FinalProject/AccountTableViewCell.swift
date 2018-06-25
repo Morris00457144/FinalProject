@@ -10,6 +10,7 @@ import UIKit
 
 class AccountTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var itemLabel: UILabel!
     override func awakeFromNib() {

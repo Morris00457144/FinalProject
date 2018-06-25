@@ -7,33 +7,49 @@
 //
 
 import UIKit
+import UserNotifications
 
-class EditRemindTableViewController: UITableViewController {
+class EditRemindTableViewController: UITableViewController ,UITextFieldDelegate{
     
     var remind: Remind?
 
     @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var contentTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var contentTextField: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EditRemindTableViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+        navigationController?.navigationBar.tintColor = UIColor.white;
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         if let remind = remind{
             dateTextField.text = remind.time
             titleTextField.text = remind.title
             contentTextField.text = remind.content
         }
+        
     }
     
     
    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.view.endEditing(true)
+        return true
+    }
     @IBAction func donebuttonPressed(_ sender: Any) {
+        if titleTextField.text?.count == 0{
+            let alertController = UIAlertController(title: "請輸入標題", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(action)
+            present(alertController, animated: true, completion: nil)
+            return
+        }
         if dateTextField.text?.count == 0{
             let alertController = UIAlertController(title: "請輸入時間", message: nil, preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -48,25 +64,40 @@ class EditRemindTableViewController: UITableViewController {
             present(alertController, animated: true, completion: nil)
             return
         }
-        if titleTextField.text?.count == 0{
-            let alertController = UIAlertController(title: "請輸入標題", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(action)
-            present(alertController, animated: true, completion: nil)
-            return
-        }
+        let formatter = DateFormatter()
+        var date = datePicker.date
+        formatter.dateFormat = "yyyy-M-d H:mm"
+        formatter.locale = NSLocale(localeIdentifier: "zh_TW") as Locale
+        date = formatter.date(from: dateTextField.text!)!
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        print(components)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        let content = UNMutableNotificationContent()
+        content.title = titleTextField.text!
+        content.body = contentTextField.text!
+        content.badge = 1
+        let request = UNNotificationRequest(identifier:"提醒", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request,withCompletionHandler: nil)
+ 
         performSegue(withIdentifier: "goBackToRemindTableWithSegue", sender: nil)
-        
+ 
     }
     var datePicker : UIDatePicker!
     
     @IBAction func EditDateTextField(_ sender: UITextField) {
         self.datePicker = UIDatePicker(frame:CGRect(x: 0, y:0,width: self.view.frame.size.width, height:216))
-        self.datePicker.datePickerMode = UIDatePickerMode.date
+        self.datePicker.datePickerMode = .dateAndTime
+        //datePicker.minuteInterval = 15
+        datePicker.date = NSDate() as Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy-M-d H:mm"
+       let fromDateTime = dateFormatter.date(from: "2018-06-25 12:00")
+        datePicker.minimumDate = fromDateTime
+        datePicker.locale = NSLocale(localeIdentifier: "zh_TW") as Locale
+        
         
         dateTextField.inputView = self.datePicker
         
@@ -87,7 +118,7 @@ class EditRemindTableViewController: UITableViewController {
         let dateFormatter1 = DateFormatter()
         dateFormatter1.dateStyle = .medium
         dateFormatter1.timeStyle = .none
-        dateFormatter1.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter1.dateFormat = "yyyy-M-d H:mm"
         dateTextField.text = dateFormatter1.string(for : datePicker.date)
         dateTextField.resignFirstResponder()
     }
@@ -101,11 +132,17 @@ class EditRemindTableViewController: UITableViewController {
         dateFormatter.dateFormat = "MMMM dd yyyy"
         dateTextField.text = dateFormatter.string(from: sender.date)
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
 
     // MARK: - Table view data source
 

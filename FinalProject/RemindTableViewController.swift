@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import UserNotifications
 
 class RemindTableViewController: UITableViewController {
 
     var reminds = [Remind]()
+    var datePicker : UIDatePicker!
+    
+    
     
     @IBAction func goBackToRemindTable(segue: UIStoryboardSegue){
         let controller = segue.source as? EditRemindTableViewController
@@ -26,6 +30,8 @@ class RemindTableViewController: UITableViewController {
         }
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,9 +40,13 @@ class RemindTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        navigationController?.navigationBar.tintColor = UIColor.white;
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         if let reminds = Remind.readAccountsFromFile() {
             self.reminds = reminds
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,9 +68,9 @@ class RemindTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "remindCell", for: indexPath) as! RemindTableViewCell
         
         let remind = reminds[indexPath.row]
-        cell.timeLabel.text = remind.content
+        
+        cell.timeLabel.text = remind.time
         cell.titleLabel.text = remind.title
-
         // Configure the cell...
 
         return cell

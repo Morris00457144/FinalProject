@@ -12,6 +12,7 @@ import UIKit
 struct Account : Codable {
     var item : String
     var money : String
+    var time : String
     
     
     static func readAccountsFromFile() -> [Account]? {

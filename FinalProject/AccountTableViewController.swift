@@ -34,6 +34,9 @@ class AccountTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        navigationController?.navigationBar.tintColor = UIColor.white;
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         if let accounts = Account.readAccountsFromFile(){
             self.accounts = accounts
         }
@@ -61,6 +64,7 @@ class AccountTableViewController: UITableViewController {
         let account = accounts[indexPath.row]
         cell.itemLabel.text = account.item
         cell.moneyLabel.text = account.money
+        cell.timeLabel.text = account.time
 
         // Configure the cell...
 

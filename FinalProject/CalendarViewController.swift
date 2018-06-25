@@ -61,8 +61,7 @@ class CalendarViewController: UIViewController,UICollectionViewDataSource,UIColl
     func setUp(){
         timeLabel.text = months[currentMonth - 1] + " \(currentYear)"
         calendar.reloadData()
-        print(whatDayIsIt)
-    }
+        }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
